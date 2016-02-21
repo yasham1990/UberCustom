@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class="mainpage">
+<head>
+<title>Uber</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+</head>
+<body class="mainpagebody" ng-app="myApp">
+	<div class="mainheader"></div>
+	<div class="headerUber mainheaderUber" id="headerUber">
+		<img src="images/logo-web-light@1x.png" alt="" width="170">
+	</div>
+
+	<div class="headerRight" ng-controller="mainPgcontroller">
+		<form name="myForm" novalidate>
+			<button class="homeLoginBtn" type="submit" ng-click="homelogin()">Log
+				in</button>
+			<button class="homeSignupBtn" type="submit" ng-click="homesignup()">Sign
+				up</button>
+		</form>
+	</div>
+	<div class="backimg"></div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('mainPgcontroller', function($scope) {
+			
+			$scope.homelogin = function() {
+							window.location = "/homepage/signIn";
+			}
+			$scope.homesignup = function() {
+				window.location = "/homepage/signUp";
+}
+		});
+	</script>
+</body>
+</html>

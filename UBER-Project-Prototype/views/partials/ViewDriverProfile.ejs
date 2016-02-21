@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app = "TabsApp">
+<body style="background-color:BLACK">
+<link rel='stylesheet' href='/stylesheets/styleViewEditProfile.css' />
+<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="/angularjs/driverhomepage.js"></script>
+
+<link href="/stylesheets/xeditable.css" rel="stylesheet">
+<script src="/angularjs/xeditable.js"></script>
+
+
+<h1 style="color:grey">VIEW PROFILE</h1>
+
+<br>
+
+<div ng-controller="DriverController" ng-init="init()" style="margin:20px">
+	<table rules="none">
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">Firstname</p>
+				<pre>{{ driver.FirstName }}</pre>
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+				<p style="color:blue">Lastname</p>
+    				<pre>{{ driver.LastName }}</pre>
+			</td>
+		</tr>
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">Email</p>
+    				<pre>{{ driver.Email }}</pre>
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+				<p style="color:blue">Contact</p>
+    				<pre>{{ driver.Contact }}</pre>
+			</td>
+		</tr>
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">Address</p>				
+    				<pre>{{ driver.Address }}</pre>
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+				<p style="color:blue">Car Details</p>
+				<pre>{{ driver.CarDetails }}</pre>
+			</td>
+		</tr>
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">City</p>
+				
+    				<pre>{{ driver.City }}</pre>
+    			
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+				<p style="color:blue">LicenseID</p>
+				
+    				<pre>{{ driver.LicenseID }}</pre>
+    			
+			</td>
+		</tr>
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">State</p>
+				
+    				<pre>{{ driver.State }}</pre>
+    			
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+				
+    				<p style="color:blue">Password</p>
+				    
+    				<pre><input style="border:none" type="password" value="{{driver.Password}}"></pre>
+    			
+    			
+			</td>
+		</tr>
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">ZipCode</p>
+				
+    				<pre>{{ driver.ZipCode }}</pre>
+    			
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+			<p style="color:blue">Rating</p>
+				
+    				<pre>{{ driver.Rating }}</pre>
+			</td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>
+
+
+
+					

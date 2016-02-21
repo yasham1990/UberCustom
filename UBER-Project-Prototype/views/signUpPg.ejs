@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Uber</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+</head>
+<body class="mainpagebody" ng-app="myApp">
+<div class="mainheader"></div>
+	<div class="headerUber mainheaderUber" id="headerUber"><img src="/images/logo-web-light@1x.png" alt="" width="170"></div>  
+    <div class="signIndiv">
+ <p class="signInTitle">
+<span> Sign Up </span>
+</p>
+<div class="signInbottom" ng-controller="signUpPgcontroller">
+<button type="submit" id="customerSignUpBtn" class="customerSignUpBtn" value="SIGN UP AS A RIDER" ng-click="customerSignUp()">SIGN UP AS A RIDER</button>
+<button type="submit" id="driverSignUpBtn" class="customerSignUpBtn driverSignUpBtn" value="SIGN UP AS A DRIVER" ng-click="driverSignUp()">SIGN UP AS A DRIVER</button>
+</div>
+    </div>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('signUpPgcontroller', function($scope) {
+			
+			$scope.customerSignUp= function() {
+							window.location = "signup/customer";
+			}
+			$scope.driverSignUp = function() {
+				window.location = "/homepage/signup/driver";
+}
+		});
+	</script>
+</body>    
+</html>

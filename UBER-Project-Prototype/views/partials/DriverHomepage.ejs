@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+li {
+    float: left;
+    border: 1px solid #000;
+    border-bottom-width: 0;
+    margin: 3px 3px 0px 3px;
+    padding: 5px 5px 0px 5px;
+    background-color: #CCC;
+    color: #696969;
+}
+#mainView {
+    border: 1px solid black;
+	clear: both;
+	padding: 0 1em;
+}
+.active {
+    background-color: #FFF;
+    color: #000;
+}
+</style>
+
+
+<body style="background-color:BLACK">
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="/stylesheets/xeditable.css" rel="stylesheet">
+<script src="/angularjs/xeditable.js"></script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div ng-app="TabsApp"  style="background-color:#3399FF; width:500px; margin: 0 auto; top:100px">
+    <div id="tabs" ng-controller="TabsCtrl" ng-init="initDriverHomePage()">
+        <ul>
+            <li ng-repeat="tab in tabs" 
+                ng-class="{active:isActiveTab(tab.url)}" 
+                ng-click="onClickTab(tab)">{{tab.title}}</li>
+        </ul>
+        <div id="mainView">
+            <div ng-include="currentTab"></div>
+        </div>
+    
+    <script type="text/ng-template" id="one.tpl.html">
+		<div id="viewOne">
+			<h2>UpComing Ride Details</h2>
+			<div ng-show="nothing_for_now_tab1">
+						<p><button type="button" class="btn btn-default btn-lg">
+          		<span style="margin:0 auto;"></span> NO RIDES FOR NOW
+          	</button></p>
+			</div>
+			<div ng-hide="nothing_for_now_tab1">		
+			<p>
+			<button type="button" class="btn btn-default btn-lg">
+          		<span style="margin:0 auto;" class="glyphicon glyphicon-user"></span> {{name}}
+          	</button>
+          	<button type="button" class="btn btn-default btn-lg">
+          		<span class="glyphicon glyphicon-phone"></span> {{contact}}
+          	</button>
+          	<button type="button" class="btn btn-default btn-lg">
+          		<span class="glyphicon glyphicon-time"></span> {{timenow}}
+          	</button>
+          	<br><br>
+            <button type="button" class="btn btn-default btn-lg">
+            	<span class="glyphicon glyphicon-home"></span> {{address}}
+        	</button>
+			</p>
+			</div>
+		</div>
+	</script>
+	
+	<script type="text/ng-template" id="two.tpl.html">
+		<div id="viewTwo">
+			<h2>Ongoing or Recently Completed Ride Details</h2>
+			<div ng-show="nothing_for_now_tab2">
+						<p><button type="button" class="btn btn-default btn-lg">
+          		<span style="margin:0 auto;"></span> NO RIDES FOR NOW
+          	</button></p>
+			</div>
+			<div ng-hide="nothing_for_now_tab2">		
+			<p>
+			<button type="button" class="btn btn-default btn-lg">
+          		<span style="margin:0 auto;" class="glyphicon glyphicon-user"></span> {{name}}
+          	</button>
+          	<button type="button" class="btn btn-default btn-lg">
+          		<span class="glyphicon glyphicon-phone"></span> {{contact}}
+          	</button>
+          	<button type="button" class="btn btn-default btn-lg">
+          		<span class="glyphicon glyphicon-time"></span> {{timenow}}
+          	</button>
+          	<br><br>
+            <button type="button" class="btn btn-default btn-lg">
+            	<span class="glyphicon glyphicon-home"></span> {{address}}
+        	</button>
+			</p>
+			</div>
+		</div>
+	</script>
+	
+	<script type="text/ng-template" id="three.tpl.html">
+		<div id="viewThree">
+			<h2>Cancelled Ride Details</h2>
+			<div ng-show="nothing_for_now_tab3">
+						<p><button type="button" class="btn btn-default btn-lg">
+          		<span style="margin:0 auto;"></span> NO RIDES FOR NOW
+          	</button></p>
+			</div>
+			<div ng-hide="nothing_for_now_tab3">		
+			<p>
+			<button type="button" class="btn btn-default btn-lg">
+          		<span style="margin:0 auto;" class="glyphicon glyphicon-user"></span> {{name}}
+          	</button>
+          	<button type="button" class="btn btn-default btn-lg">
+          		<span class="glyphicon glyphicon-phone"></span> {{contact}}
+          	</button>
+          	<button type="button" class="btn btn-default btn-lg">
+          		<span class="glyphicon glyphicon-time"></span> {{timenow}}
+          	</button>
+          	<br><br>
+            <button type="button" class="btn btn-default btn-lg">
+            	<span class="glyphicon glyphicon-home"></span> {{address}}
+        	</button>
+			</p>
+			</div>
+		</div>
+	</script>
+	</div>
+</div>
+
+</body>
+</html>
+
+<script src="/angularjs/driverhomepage.js">
+
+</script>

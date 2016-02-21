@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Uber</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+	<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    </head>
+<body class="mainpagebody" ng-app="myApp">
+<div class="mainheader"></div>
+	<div class="headerUber mainheaderUber" id="headerUber"><img src="images/logo-web-light@1x.png" alt="" width="170"></div>  
+    <div class="adminHomePage"  ng-controller="adminFunctions">
+<div class="adminHPleft">
+<ul>
+				<li><a href="/admCustomerList">Listing all Customers</a></li>
+				<li><a href="/admDriverList">Listing all Drivers</a></li>
+				<li class="active"><a href="/admSearchBill">Search Billing</a></li>
+				<li><a href="/admGraphs">Graphs</a></li>
+				<li><a href="/admRevenuePDay">Revenue per Day</a></li>
+				<li><a href="/admRevenuePLoc">Revenue
+						per Location</a></li>
+				<li><a href="/admReviewDriver">Review Driver</a></li>
+				<li><a href="/admReviewCustomer">Review Customer</a></li>
+</ul>
+</div>
+<div class="adminHPright">
+
+
+	
+
+<div class="adminFunc adminSearchBill">
+<h1>SEARCH BILL</h1>
+<input id="searchBill" placeholder="Enter the Bill Id" type="text" name="searchBill" ng-model="searchBill" required>
+<button type="submit" id="searchBillBtn" class="searchBillBtn" value="SEARCH BILL" ng-click="searchBillFunc()">SEARCH BILL</button>
+<h1 style="color:grey">BILL DETAILS</h1>
+<p><%= message%></p>
+<table class="table table-striped driverTable">
+
+  	<tbody>
+    
+		<tr>
+			<td class="tdClass">Ride ID</td>
+		<td><%= bill.rideId%></td>
+	</tr>
+			<tr>
+			<td class="tdClass">Distance</td>
+		<td><%= bill.distance%></td>
+	</tr>
+				<tr>
+			<td class="tdClass">Amount</td>
+		<td><%= bill.amount%></td>
+	</tr>
+			<tr>
+			<td class="tdClass">Source</td>
+		<td><%= bill.source%></td>
+	</tr>
+			<tr>
+			<td class="tdClass">Destination</td>
+		<td><%= bill.destination%></td>
+	</tr>
+				<tr>
+			<td class="tdClass">Pickup Time</td>
+		<td><%= bill.pickup%></td>
+	</tr>
+				<tr>
+			<td class="tdClass">Drop Time</td>
+		<td><%= bill.drop%></td>
+	</tr>
+				<tr>
+			<td class="tdClass">Customer</td>
+		<td><%= bill.customer%></td>
+	</tr>
+
+					<tr>
+			<td class="tdClass">Driver</td>
+		<td><%= bill.driver%></td>
+	</tr>
+        					<tr>
+			<td class="tdClass">Driver Rating</td>
+		<td><%= bill.dRating%></td>
+	</tr>
+	        					<tr>
+			<td class="tdClass">Customer Rating</td>
+		<td><%= bill.cRating%></td>
+	</tr>
+	
+		
+  </tbody>
+
+      </table>
+</div>
+    
+     </div>
+<script src="/angularjs/adminAngular.js"></script>
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller('adminFunctions', function($scope) {
+
+				$scope.searchBillFunc = function() {
+					//alert($("#dayRevenue").val());
+					window.location = "/searchBillFunc?searchBill="+$scope.searchBill;
+					
+		
+				}
+			});
+		</script>
+</body>    
+</html>

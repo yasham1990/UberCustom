@@ -1,0 +1,113 @@
+<html>
+<head>
+	<title>Uber</title>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	<link rel='stylesheet' href='/stylesheets/styleDriverSignin.css' />
+</head>
+<body ng-app="myApp" ng-controller="CustomerLoginController">
+	<div class="headerUber" id="headerUber">U B E R</div>  
+	<div class="signIndiv"> 
+		<p class="signInTitle">
+			<span> Log In </span>
+		</p>
+	</div>  
+	
+	<form> 
+			<center><div id="textField" class="header">EMAIL</center>
+			<center><input id="field" placeholder="Email" type="mail" name="email" ng-model="email" required>
+				<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+					<span ng-show="myForm.email.$error.required">Email is required.</span>
+				</span></center>
+			</div> 
+			<center><div id="textFieldPwd" class="header">PASSWORD</center>
+				<center><input id="field" placeholder="Password" type="password" name="password" ng-model="password" required>
+				<span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+					<span ng-show="myForm.password.$error.required">Password is required.</span>
+				</span></center>
+			</div>
+			<center><button type="submit" id="fsSubmitButton" class="fsSubmitButton" value="SIGN IN" ng-click="signIn()"  ng-disabled="myForm.email.$dirty && myForm.email.$invalid ||  
+			myForm.password.$dirty && myForm.password.$invalid">SIGN IN</button></center>
+			
+			<div class="col-md-12" style="margin: 10px 0;">
+					<div class="alert alert-danger" ng-show="invalid_email" style="width:390px; margin:0px auto;">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+						<strong>Incorrect email</strong>
+					</div>
+					<div class="alert alert-danger" ng-show="invalid_password" style="width:390px; margin:0px auto;">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+						<strong>Incorrect password</strong>
+					</div>
+					<div class="alert alert-danger" ng-show="unexpected_error" style="width:390px; margin:0px auto;">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+						<strong>Unexpected error, try again Enter both email and password</strong>
+					</div>					
+			</div>
+	</form>
+</body>                          
+</html>     
+<script>
+			var app = angular.module('myApp', []);
+			app.controller('CustomerLoginController', function($scope, $http) {
+			
+			$scope.invalid_email = false;
+			$scope.invalid_password = false;
+			$scope.unexpected_error = false;
+			
+			$scope.signIn = function() {
+				$http({
+					method : "POST",
+					url : '/homepage/signin/customer/login/',
+					data : {
+						"email" : $scope.email,
+						"password" : $scope.password
+					}
+				}).success(function(data) {
+				//checking the response data for statusCode
+				if (data.statusCode === 401) {
+					$scope.invalid_email = true;
+					$scope.invalid_password = false;
+					$scope.unexpected_error = false;
+					//window.location.assign("/homepage/signin/customer");
+				}
+				else if (data.statusCode === 302) {
+					$scope.invalid_email = false;
+					$scope.invalid_password = true;
+					$scope.unexpected_error = false;
+					//window.location.assign("/homepage/signin/customer");
+				}
+				else if (data.statusCode === 200) {
+					$scope.unexpected_error = false;
+					$scope.invalid_email = false;
+					$scope.invalid_password = false;
+					//Making a get call to the '/redirectToCustomerHomepage' API
+					window.location.assign("/homepage/signin/customer/homepage");
+				}
+				else {
+					$scope.unexpected_error = true;
+					$scope.invalid_email = false;
+					$scope.invalid_password = false;
+					//window.location.assign("/homepage/signin/customer");
+				} 
+			}).error(function(error) {
+				$scope.unexpected_error = true;
+				$scope.invalid_email = false;
+				$scope.invalid_password = false;
+				//window.location.assign("/homepage/signin/customer");
+			});
+	};
+			    
+			    
+			    
+			    
+			});
+</script>

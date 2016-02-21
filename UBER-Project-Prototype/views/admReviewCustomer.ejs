@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Uber</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+	<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    </head>
+<body class="mainpagebody" ng-app="myApp">
+<div class="mainheader"></div>
+	<div class="headerUber mainheaderUber" id="headerUber"><img src="images/logo-web-light@1x.png" alt="" width="170"></div>  
+    <div class="adminHomePage"  ng-controller="adminFunctions">
+<div class="adminHPleft">
+<ul>
+				<li><a href="/admCustomerList">Listing all Customers</a></li>
+				<li><a href="/admDriverList">Listing all Drivers</a></li>
+				<li><a href="/admSearchBill">Search Billing</a></li>
+				<li><a href="/admGraphs">Graphs</a></li>
+				<li><a href="/admRevenuePDay">Revenue per Day</a></li>
+				<li><a href="/admRevenuePLoc">Revenue
+						per Location</a></li>
+				<li><a href="/admReviewDriver">Review Driver</a></li>
+				<li class="active"><a href="/admReviewCustomer">Review Customer</a></li>
+</ul>
+</div>
+<div class="adminHPright">
+<div class="adminFunc adminRDriver">
+<h1>SEARCH CUSTOMER</h1>
+<input id="searchCustomer" placeholder="Enter the Customer Id" type="text" name="searchCustomer" ng-model="searchCustomer" required>
+<button type="submit" id="searchCustomerBtn" class="searchBillBtn searchCustomerBtn" value="SEARCH DRIVER" ng-click="searchCustomerFunc()">SEARCH CUSTOMER</button>
+<h1 style="color:grey">VIEW CUSTOMER PROFILE</h1>
+<p><%= message%></p>
+<table class="table table-striped driverTable">
+
+  	<tbody>
+    
+		<tr>
+			<td class="tdClass">Firstname</td>
+		<td><%= customer.firstname%></td>
+	</tr>
+			<tr>
+			<td class="tdClass">Lastname</td>
+		<td><%= customer.lastname%></td>
+	</tr>
+				<tr>
+			<td class="tdClass">Address</td>
+		<td><%= customer.address%></td>
+	</tr>
+			<tr>
+			<td class="tdClass">City</td>
+		<td><%= customer.city%></td>
+	</tr>
+			<tr>
+			<td class="tdClass">State</td>
+		<td><%= customer.state%></td>
+	</tr>
+				<tr>
+			<td class="tdClass">Zipcode</td>
+		<td><%= customer.zipcode%></td>
+	</tr>
+				<tr>
+			<td class="tdClass">Contact</td>
+		<td><%= customer.contact%></td>
+	</tr>
+				<tr>
+			<td class="tdClass">Email</td>
+		<td><%= customer.email%></td>
+	</tr>
+
+					<tr>
+			<td class="tdClass">Credit Card Number</td>
+		<td><%= customer.cardnumber%></td>
+	</tr>
+        					<tr>
+			<td class="tdClass">Credit Card Expiry</td>
+		<td><%= customer.cardexpiry%></td>
+	</tr>
+	        					<tr>
+			<td class="tdClass">Credit Card Zip</td>
+		<td><%= customer.cardzip%></td>
+	</tr>
+						<tr>
+			<td class="tdClass">Rating</td>
+		<td><%= customer.rating%></td>
+	</tr>
+ 
+		
+  </tbody>
+
+      </table>
+</div>
+    
+     </div>
+<script src="/angularjs/adminAngular.js"></script>
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller('adminFunctions', function($scope) {
+
+				$scope.searchCustomerFunc = function() {
+					//alert($("#dayRevenue").val());
+					window.location = "/searchCustomerFunc?searchCustomer="+$scope.searchCustomer;
+					
+		
+				}
+			});
+		</script>
+</body>    
+</html>

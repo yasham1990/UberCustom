@@ -1,0 +1,81 @@
+html, body {
+    color: #09091a;
+    background-color: #09091a;
+}
+#map
+{
+	height:300px;
+	width:500px;
+	margin-left:500px;
+	margin-top:50px;
+	padding:0px;
+	
+}
+#headerUber
+{
+    font-family: ff-clan-web-pro, "Helvetica Neue", Helvetica, sans-serif;
+    color:#FFFFFF;
+    text-align: center;
+    font-size:30px;
+    padding-top: 1cm;
+}
+#img1{
+	padding-top: 1cm;
+	padding-left:9.5cm;
+	align:middle;
+}
+#headerSignIn
+{
+	font-family: ff-clan-web-pro, "Helvetica Neue", Helvetica, sans-serif;
+    color:#FFFFFF;
+    text-align: center;
+    font-size:25px;
+    padding-top: 1cm;
+}
+#textField
+{
+	font-family: ff-clan-web-pro, "Helvetica Neue", Helvetica, sans-serif;
+    color:#FFFFFF;
+    padding-right:9cm;
+    font-size:15px;
+    padding-top: 1cm;
+    padding-bottom: 0.2cm;
+}
+#textFieldPwd
+{
+	padding-right:8cm;
+	font-family: ff-clan-web-pro, "Helvetica Neue", Helvetica, sans-serif;
+    color:#FFFFFF;
+    font-size:15px;
+    padding-top: 1cm;
+    padding-bottom: 0.2cm;
+}
+#field
+{
+	width:30%;
+	height:9%;
+	border: solid 1px #707070;
+  	box-shadow: 0 0 5px 1px #48dce3;
+  	border: solid 1px #dcdcdc;
+  	transition: box-shadow 0.3s, border 0.3s;
+}
+.fsSubmitButton
+{
+	width:30%;
+	height:9%;
+	 margin-top: 30px;  
+padding: 10px 15px 11px !important;
+font-size: 18px !important;
+background-color: #48dce3;
+font-weight: bold;
+text-shadow: 1px 1px #48dce3;
+color: #ffffff;
+border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border: 1px solid #48dce3;
+cursor: pointer;
+box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+}

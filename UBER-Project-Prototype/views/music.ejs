@@ -1,0 +1,104 @@
+<html>
+<head>
+	<link rel="stylesheet" href="/stylesheets/styleDriverSignin.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  	<script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script src="/assets/gmap3.js?body=1" type="text/javascript"></script>
+
+<script type="text/javascript">
+var marker1, marker2;
+var poly, geodesicPoly;
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: {
+      lat: 34,
+      lng: -40.605
+    }
+  });
+
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(
+    document.getElementById('info'));
+
+  marker1 = new google.maps.Marker({
+    map: map,
+    draggable: true,
+    position: {
+      lat: 10.379392700137583, 
+      lng: 104.48601004588143
+    }
+  });
+
+  marker2 = new google.maps.Marker({
+    map: map,
+    draggable: true,
+    position: {
+      lat: 10.607085236979454, 
+      lng: 104.18364549108138
+    }
+  });
+  
+  marker3 = new google.maps.Marker({
+    map: map,
+    draggable: true,
+    position: {
+      lat: 10.615441163514843, 
+      lng: 103.5214887207791
+    }
+  });
+
+  var bounds = new google.maps.LatLngBounds();
+  bounds.extend(marker1.getPosition());
+  bounds.extend(marker2.getPosition())
+  bounds.extend(marker3.getPosition())
+  map.fitBounds(bounds);
+
+
+  google.maps.event.addListener(marker1, 'position_changed', update);
+  google.maps.event.addListener(marker2, 'position_changed', update);
+  google.maps.event.addListener(marker3, 'position_changed', update);
+
+  poly = new google.maps.Polyline({
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 3,
+    map: map,
+  });
+
+  /*geodesicPoly = new google.maps.Polyline({
+    strokeColor: '#CC0099',
+    strokeOpacity: 1.0,
+    strokeWeight: 3,
+    geodesic: true,
+    map: map
+  });*/
+
+  update();
+}
+
+function update() {
+  var path = [marker1.getPosition(), marker2.getPosition(),marker3.getPosition()];
+  poly.setPath(path);
+  
+}
+google.maps.event.addDomListener(window, "load", initMap);
+</script>
+</head>
+<body background="1.jpg">
+
+<div id="map"></div>
+
+	<div style="text-align:center">
+		<h1>Music details</h1>
+		<audio controls autoplay >
+		<source src="1.mp3" type="audio/mpeg" hidden="true">
+		Your browser does not support the audio element.
+		</audio>
+		<br/><br/><br/>
+		<input type="submit" class="fsSubmitButton" value="Stop Trip">
+	</div>
+</body>
+</html>

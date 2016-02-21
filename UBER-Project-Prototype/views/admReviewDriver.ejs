@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Uber</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+	<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    </head>
+<body class="mainpagebody" ng-app="myApp">
+<div class="mainheader"></div>
+	<div class="headerUber mainheaderUber" id="headerUber"><img src="images/logo-web-light@1x.png" alt="" width="170"></div>  
+    <div class="adminHomePage"  ng-controller="adminFunctions">
+<div class="adminHPleft">
+<ul>
+				<li><a href="/admCustomerList">Listing all Customers</a></li>
+				<li><a href="/admDriverList">Listing all Drivers</a></li>
+				<li><a href="/admSearchBill">Search Billing</a></li>
+				<li><a href="/admGraphs">Graphs</a></li>
+				<li><a href="/admRevenuePDay">Revenue per Day</a></li>
+				<li><a href="/admRevenuePLoc">Revenue
+						per Location</a></li>
+				<li class="active"><a href="/admReviewDriver">Review Driver</a></li>
+				<li><a href="/admReviewCustomer">Review Customer</a></li>
+</ul>
+</div>
+<div class="adminHPright">
+<div class="adminFunc adminRDriver">
+<h1>SEARCH DRIVER</h1>
+<input id="searchDriver" placeholder="Enter the Driver Id" type="text" name="searchDriver" ng-model="searchDriver" required>
+<button type="submit" id="searchDriverBtn" class="searchBillBtn searchDriverBtn" value="SEARCH DRIVER" ng-click="searchDriverFunc()">SEARCH DRIVER</button>
+<h1 style="color:grey">VIEW DRIVER PROFILE</h1>
+<p><%= message%></p>
+<table class="table table-striped driverTable">
+
+  	<tbody>
+    
+		<tr>
+			<td class="tdClass">Firstname</td>
+		<td><%= driver.firstname%></td>
+	</tr>
+			<tr>
+			<td class="tdClass">Lastname</td>
+		<td><%= driver.lastname%></td>
+	</tr>
+				<tr>
+			<td class="tdClass">Address</td>
+		<td><%= driver.address%></td>
+	</tr>
+			<tr>
+			<td class="tdClass">City</td>
+		<td><%= driver.city%></td>
+	</tr>
+			<tr>
+			<td class="tdClass">State</td>
+		<td><%= driver.state%></td>
+	</tr>
+				<tr>
+			<td class="tdClass">Zipcode</td>
+		<td><%= driver.zipcode%></td>
+	</tr>
+				<tr>
+			<td class="tdClass">Contact</td>
+		<td><%= driver.contact%></td>
+	</tr>
+				<tr>
+			<td class="tdClass">Email</td>
+		<td><%= driver.email%></td>
+	</tr>
+					<tr>
+			<td class="tdClass">LicenceID</td>
+		<td><%= driver.licenseid%></td>
+	</tr>
+        					<tr>
+			<td class="tdClass">Cardetails</td>
+		<td><%= driver.cardetails%></td>
+	</tr>
+						<tr>
+			<td class="tdClass">Rating</td>
+		<td><%= driver.rating%></td>
+	</tr>
+ 
+		
+  </tbody>
+
+      </table>
+</div>
+    
+     </div>
+<script src="/angularjs/adminAngular.js"></script>
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller('adminFunctions', function($scope) {
+
+				$scope.searchDriverFunc = function() {
+					//alert($("#dayRevenue").val());
+					window.location = "/searchDriverFunc?searchDriver="+$scope.searchDriver;
+					
+		
+				}
+			});
+		</script>
+</body>    
+</html>

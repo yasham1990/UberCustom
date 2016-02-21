@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+<link href="/stylesheets/xeditable.css" rel="stylesheet">
+<script src="angularjs/xeditable.js"></script>
+<div class="graphBody">
+<h1>GRAPHS</h1>
+<a class="graphBack" href="/admGraphBack">Admin Page</a>
+<br>
+<br>
+
+<form action="getRidesPerArea" method="get">
+		<button type="submit" class="btn btn-info btn-lg">
+		<span class="glyphicon glyphicon-circle-arrow-right"></span> Rides Per Area 
+		</button>
+</form>
+
+<form action="getRevenuePerLocation" method="get">
+		<button type="submit" class="btn btn-info btn-lg">
+		<span class="glyphicon glyphicon-circle-arrow-right"></span> Revenue Per Location
+		</button>
+</form>
+
+<form action="getRevenuePerDay" method="get">
+		<button type="submit" class="btn btn-info btn-lg">
+		<span class="glyphicon glyphicon-circle-arrow-right"></span> Revenue Per Day
+		</button>
+</form>
+
+<form action="getRidesPerDriver" method="get">
+		<button type="submit" class="btn btn-info btn-lg">
+		<span class="glyphicon glyphicon-circle-arrow-right"></span> Rides Per Driver
+		</button>
+</form>
+
+<form action="getRidesPerCustomer" method="get">
+		<button type="submit" class="btn btn-info btn-lg">
+		<span class="glyphicon glyphicon-circle-arrow-right"></span> Rides Per Customer
+		</button>
+</form>
+</div>
+</html>
+					

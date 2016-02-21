@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uber</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">	
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://jqueryui.com/datepicker/resources/demos/style.css">
+
+
+
+</head>
+<body class="mainpagebody" ng-app="myApp">
+	<div class="mainheader"></div>
+	<div class="headerUber mainheaderUber" id="headerUber">
+		<img src="images/logo-web-light@1x.png" alt="" width="170">
+	</div>
+	<div class="adminHomePage" ng-controller="adminFunctions">
+		<div class="adminHPleft">
+			<ul>
+				<li><a href="/admCustomerList">Listing all Customers</a></li>
+				<li><a href="/admDriverList">Listing all Drivers</a></li>
+				<li><a href="/admSearchBill">Search Billing</a></li>
+				<li><a href="/admGraphs">Graphs</a></li>
+				<li class="active"><a href="/admRevenuePDay">Revenue per Day</a></li>
+				<li><a href="/admRevenuePLoc">Revenue
+						per Location</a></li>
+				<li><a href="/admReviewDriver">Review Driver</a></li>
+				<li><a href="/admReviewCustomer">Review Customer</a></li>
+			</ul>
+		</div>
+		<div class="adminHPright">
+			<div class="adminFunc adminRevenueDay">
+				<h1>REVENUE PER DAY</h1>
+				<input id="dayRevenue" placeholder="Enter the Date" type="text"
+					name="dayRevenue" ng-model="dayRevenue" required>
+				<button type="submit" id="dayRevenueBtn"
+					class="searchBillBtn locRevenueBtn dayRevenueBtn" value="SEARCH REVENUE"
+					ng-click="dayRevenueFunc()">SEARCH REVENUE</button>
+				
+				
+				<p><%= message%></p>
+					<table class="table table-striped">
+  	        <thead>
+          <tr class="bg-info">
+           <th>Ride Id</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+  	<tbody>
+    	<%locAmount.forEach(function(laob) {%>
+		<tr>
+		<td><%= laob.rideID%></td>
+		<td><%= laob.source%></td>
+		<td><%= laob.destination%></td>
+		<td><%= laob.amount%></td>
+</tr>
+		<% }); %>
+  </tbody>
+
+      </table>
+				 <p>Total Revenue($) per day</p>
+				<p><%= locRSum %></p>
+				
+			</div>
+				
+				
+				
+			
+
+		</div>
+		<script src="/angularjs/adminAngular.js"></script>
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller('adminFunctions', function($scope) {
+
+				$scope.dayRevenueFunc = function() {
+					//alert($("#dayRevenue").val());
+					$scope.dayRevenue=$("#dayRevenue").val();
+					window.location = "/dayRevenueFunc?dayRevenue="+$scope.dayRevenue;
+					
+					
+		
+				}
+			});
+		</script>
+		<script>
+	$(document).ready(function(){
+		
+		$("#dayRevenue").datepicker({dateFormat: 'yy-mm-dd'});
+	});
+	
+	</script>
+</body>
+</html>

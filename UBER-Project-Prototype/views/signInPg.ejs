@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Uber</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+</head>
+<body class="mainpagebody" ng-app="myApp">
+<div class="mainheader"></div>
+	<div class="headerUber mainheaderUber" id="headerUber"><img src="/images/logo-web-light@1x.png" alt="" width="170"></div>  
+    <div class="signIndiv">
+ <p class="signInTitle">
+<span> Log In </span>
+</p>
+<div class="signInbottom" ng-controller="signInPgcontroller">
+<button type="submit" id="customerSignInBtn" class="customerSignInBtn" value="LOG IN AS A RIDER" ng-click="customerSignIn()">LOG IN AS A RIDER</button>
+<button type="submit" id="driverSignInBtn" class="customerSignInBtn driverSignInBtn" value="LOG IN AS A DRIVER" ng-click="driverSignIn()">LOG IN AS A DRIVER</button>
+<button type="submit" id="adminSignInBtn" class="customerSignInBtn adminSignInBtn" value="LOG IN AS A ADMIN" ng-click="adminSignIn()">LOG IN AS A ADMIN</button>
+</div>
+    </div>
+
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('signInPgcontroller', function($scope) {
+			
+			$scope.customerSignIn = function() {
+							window.location = "/homepage/signin/customer";
+			}
+			$scope.driverSignIn = function() {
+				window.location = "/homepage/signin/driver";
+}
+			$scope.adminSignIn = function() {
+				window.location = "/homepage/signin/admin";
+}
+		});
+	</script>
+</body>    
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html ng-app = "myMap">
+<body style="background-color:BLACK">
+<link rel='stylesheet' href='/stylesheets/styleViewEditProfile.css' />
+<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="/angularjs/angular.js"></script>
+
+<link href="/stylesheets/xeditable.css" rel="stylesheet">
+<script src="/angularjs/xeditable.js"></script>
+
+
+<h1 style="color:grey">VIEW PROFILE</h1>
+
+<br>
+
+<div ng-controller="CustomerController" ng-init="init()" style="margin:20px">
+	<table rules="none">
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">Firstname</p>
+				<pre>{{ customer.FirstName }}</pre>
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+				Lastname
+    				<pre>{{ customer.LastName }}</pre>
+			</td>
+		</tr>
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">Email</p>
+    				<pre>{{ customer.Email }}</pre>
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+				<p style="color:blue">Contact</p>
+    				<pre>{{ customer.Contact }}</pre>
+			</td>
+		</tr>
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">Address</p>				
+    				<pre>{{ customer.Address }}</pre>
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+				<p style="color:grey">Credit Card Details</p>
+			</td>
+		</tr>
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">City</p>
+				
+    				<pre>{{ customer.City }}</pre>
+    			
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+				<p style="color:blue">CardNumber</p>
+				
+    				<pre>{{ customer.CardNumber }}</pre>
+    			
+			</td>
+		</tr>
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">State</p>
+				
+    				<pre>{{ customer.State }}</pre>
+    			
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+				<p style="color:blue">CardCVV</p>
+				
+    				<pre>{{ customer.CardCVV }}</pre>
+    			
+			</td>
+		</tr>
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">ZipCode</p>
+				
+    				<pre>{{ customer.ZipCode }}</pre>
+    			
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+			<p style="color:blue">CardExpiry</p>
+				
+    				<pre>{{ customer.Expiry }}</pre>
+    			
+			</td>
+		</tr>
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+				<p style="color:blue">Password</p>
+				    
+    				<pre><input style="border:none" type="password" value="{{customer.Password}}"></pre>
+    			
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+			<p style="color:blue">Card Zip</p>
+
+    				<pre>{{ customer.Zip }}</pre>
+    				
+			</td>
+		</tr>
+		<tr style="font-weight: bold">
+			<td style="width:400px">
+			<p style="color:blue">Rating</p>
+				
+    				<pre>{{ customer.Rating }}</pre>
+    		
+			</td>
+			<td style="width:400px">
+			</td>
+			<td style="width:400px">
+			</td>
+		</tr>
+	</table>
+
+</div>
+</body>
+</html>
+
+
+
+					

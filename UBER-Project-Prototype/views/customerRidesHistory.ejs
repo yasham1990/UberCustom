@@ -1,0 +1,213 @@
+<html>
+<head>
+    <script type="text/javascript" src="//maps.google.com/maps/api/js?v=3&amp;libraries=places,geometry"></script>
+    <script data-require="angular.js@1.3.15" data-semver="1.3.15" src="https://code.angularjs.org/1.3.15/angular.js"></script>
+ 	<link rel='stylesheet' href='/stylesheets/angular-material-sidenav.css' />
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
+<script src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.js"></script>
+	
+	
+</head>
+<body >
+<div ng-controller="cust_rideCtrl" ng-app="myMap">
+	<div class="row">
+		<header role="banner" class="navbar navbar-fixed-top navbar-inverse">
+	      <div class="container">
+		        <div class="navbar-header">
+		          <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+		        </div>
+		        <div class="navbar-inverse side-collapse in">
+			          <nav role="navigation" class="navbar-collapse">
+			            <ul class="nav navbar-nav">
+			              <li><a href="#home/">View/Edit Profile</a></li>
+			              <li><a href="/customer/RidesHistoryLoad">View Ride/Billing Info</a></li>               
+			              <li><img src="/header.png" style="margin-left:180px;align:center;margin-top: 0.3cm;"></li>
+			            </ul>
+			            <ul class="nav navbar-nav" style="margin-left:400px;">
+			                 <li><a href="#home/">Logout</a></li>
+			            </ul>     
+			          </nav>
+		        </div>
+	      </div>
+	    </header>
+	</div>
+				
+				
+				
+				<div class="container" >
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Pickup Time</th>
+        <th>Driver</th>
+        <th>Fare</th>
+        <th>Car</th>
+        <th>City</th>
+        <th>Payment</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      
+        <tr ng-repeat="ride in rides">
+        
+      	<td>{{ride.R_Pickup}}</td>
+      	<td>{{ride.D_Firstname}}</td>
+      	<td>$ {{ride.R_Amount}}</td>
+        <td>{{ride.D_CarDetails}}</td>
+        <td>{{ride.D_City}}</td>
+      	<td>{{ride.C_Credit_Card_No}}</td>
+     	<td><md-button class="md-raised"><a href="" ng-click="ridedetail(ride.Ride_ID)">View Detail</a></md-button></td>
+		<td><md-button class="md-raised" ng-show="{{ride.R_Status}} = 0"><a href="" ng-click="ridedelete(ride.Ride_ID)">Delete</a></md-button></td>
+		<td><md-button class="md-raised" ng-show="{{ride.R_Status}} = 0"><a href="" ng-click="ridereview(ride.Ride_ID)">Rate</a></md-button></td>
+     </tbody>	
+      </table>
+    	
+    
+    	<div class="table-responsive"  ng-show=" rideDetails.length > 0" >          
+
+  
+  <table class="table">
+    
+    <thead>
+      <tr>
+      
+
+      
+        <th>Ride ID</th>
+        <th>Driver Name</th>
+        <th>Source Address</th>
+        <th>Destination Address</th>
+        <th>Distance</th>
+        <th>Pickup Time</th>
+        <th>Drop Time</th>
+        <th>Fare</th>
+        <th>Avg Rating</th>
+        <th>Rating</th>
+        <td>Review</td>
+        
+        
+        
+        
+        
+        
+      </tr>
+    </thead>
+    
+    
+    <tbody>
+      
+        <tr ng-repeat="details in rideDetails">
+      	<td>{{details.Ride_ID}}</td>
+      	<td>{{details.D_Firstname}} </td>
+      	<td>{{details.Source_Add}} </td>
+      	<td>{{details.Destination_Add}}</td>
+      	<td>{{details.R_Distance}} </td>
+      	<td>{{details.R_Pickup}} </td>
+      	<td>{{details.R_Drop}} </td>
+      	<td>{{details.R_Amount}} </td>
+      	<td>{{details.D_Avg_Rating}}</td>
+      	<td>{{details.D_Rating}}</td>
+      	<td>{{details.D_Review}}</td>
+      	
+      	
+      	<td>{{details.Destination_Add}}</td>
+   		
+
+    
+   <!--
+    Ride_ID: 0,
+    Source_Add: 'Union City',
+    Destination_Add: 'Great Mall',
+    R_Pickup: Mon Nov 30 2015 10:27:45 GMT-0800 (PST),
+    R_Drop: Mon Nov 30 2015 10:35:45 GMT-0800 (PST),
+    D_Rating: null,
+    D_Review: null,
+    C_Rating: null,
+    C_Review: null,
+    
+    
+    R_Amount: 9.97,
+    
+    
+    D_Firstname: 'Jasdeepsingh',
+    D_Lastname: 'undefined',
+   
+   
+   
+   
+   
+   
+    D_CarDetails: null,
+   
+    D_Avg_Rating: null,
+   
+    C_Firstname: 'Jalshree',
+    C_Lastname: 'Trivedi',
+    
+    
+    
+    
+    
+   --> 
+
+
+
+
+
+
+      	 
+
+
+      	
+    
+    </tbody>
+    </table>
+     	
+    
+    </div>	
+			
+
+
+
+        
+  <form class="form-inline" role="form" ng-show="rate">
+      <div class="form-group">
+      <label for="sel1">Driver Rating</label>
+      <select class="form-control" ng-model ="D_Rating" id="sel1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        
+      </select>
+      </div>
+      <div class="form-group">
+      <label for="text">Driver Review</label>
+      <input type="text" class="form-control" ng-model ="D_Review" placeholder="Rate Diver">
+      </div>
+      <button type="button" class="btn btn-info" ng-click="driverRateReview(ride.Ride_ID)">Rate and Review</button>
+   </form>
+  
+
+			
+				
+				
+				
+            	   <script
+					src="/angularjs/angular.js">
+				</script>                 
+  </div>   
+  
+             
+</body>                          
+</html>               

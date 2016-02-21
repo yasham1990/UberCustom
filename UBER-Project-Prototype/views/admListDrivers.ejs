@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Uber</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+	<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    </head>
+<body class="mainpagebody" ng-app="myApp">
+<div class="mainheader"></div>
+	<div class="headerUber mainheaderUber" id="headerUber"><img src="images/logo-web-light@1x.png" alt="" width="170"></div>  
+    <div class="adminHomePage"  ng-controller="adminFunctions">
+<div class="adminHPleft">
+<ul>
+<li><a ng-click="adminAllCustomers()">Listing all Customers</a></li>
+ <li class="active"><a  ng-click="adminAllDrivers()">Listing all Drivers</a></li>
+ <li><a ng-click="adminSearchBill()">Search Billing</a></li>
+<li><a ng-click="adminGraphs()">Graphs</a></li>
+<li><a ng-click="adminRevenueDay()">Revenue per Day</a></li>
+<li><a ng-click="adminRevenueLocation()">Revenue per Location</a></li>
+<li><a ng-click="adminReviewDriver()">Review Driver</a></li>
+<li><a ng-click="adminReviewCustomer()">Review Customer</a></li>
+</ul>
+</div>
+<div class="adminHPright">
+<div class="adminFunc adminAllCustomers">
+<h1>UBER DRIVERS</h1>
+	<table class="table table-striped">
+  	        <thead>
+          <tr class="bg-info">
+           <th>Driver Id</th>
+            <th>Name</th>
+            <th>Email Id</th>
+          </tr>
+        </thead>
+  	<tbody>
+    	<%listDriver.forEach(function(ldob) {%>
+		<tr>
+		<td><%= ldob.driverID%></td>
+		<td><%= ldob.firstname%></td>
+		<td><%= ldob.email%></td>
+</tr>
+		<% }); %>
+  </tbody>
+
+      </table>
+	         
+
+</div>
+
+
+
+
+</div>
+    
+     </div>
+<script src="/angularjs/adminAngular.js"></script>
+</body>    
+</html>

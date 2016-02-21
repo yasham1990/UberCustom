@@ -1,0 +1,21 @@
+<div ng-controller="mapsController">
+<div class="row">
+				 <div id="topbar">  
+						<p>
+							<input id="pac-input" placeholder="Source"/>
+							<input type="hidden" id="latitude"/>
+							<input type="hidden" id="longitude"/>
+						</p>
+						<p>
+							<input id="pac-input2" placeholder="Destination"/>
+							<input type="hidden" id="latitude"/>
+							<input type="hidden" id="longitude"/>
+						</p>
+						<button  id="pac-input3" ng-click="calculate()">Get Fare Estimate</button>
+	
+					</div>
+					<div id="map_canvas" style="position:absolute; top:50px; left:0px; height:60%; height:calc(100% - 30px); width:100%;overflow:hidden;">
+					</div>
+									
+</div>
+</div>

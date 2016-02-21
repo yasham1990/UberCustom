@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uber</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+</head>
+<body class="mainpagebody" ng-app="myApp">
+	<div class="mainheader"></div>
+	<div class="headerUber mainheaderUber" id="headerUber">
+		<img src="images/logo-web-light@1x.png" alt="" width="170">
+	</div>
+	<div class="adminHomePage" ng-controller="adminFunctions">
+		<div class="adminHPleft">
+			<ul>
+				<li><a href="/admCustomerList">Listing all Customers</a></li>
+				<li><a href="/admDriverList">Listing all Drivers</a></li>
+				<li><a href="/admSearchBill">Search Billing</a></li>
+				<li><a href="/admGraphs">Graphs</a></li>
+				<li><a href="/admRevenuePDay">Revenue per Day</a></li>
+				<li class="active"><a href="/admRevenuePLoc">Revenue
+						per Location</a></li>
+				<li><a href="/admReviewDriver">Review Driver</a></li>
+				<li><a href="/admReviewCustomer">Review Customer</a></li>
+			</ul>
+		</div>
+
+		<div class="adminHPright">
+			<div class="adminFunc adminRevenueDay">
+				<h1>REVENUE PER LOCATION</h1>
+				<input id="locRevenue" placeholder="Enter the Location" type="text"
+					name="locRevenue" ng-model="locRevenue" required>
+				<button type="submit" id="locRevenueBtn"
+					class="searchBillBtn locRevenueBtn" value="SEARCH REVENUE"
+					ng-click="locRevenueFunc()">SEARCH REVENUE</button>
+					<p><%= message%></p>
+					<table class="table table-striped">
+  	        <thead>
+          <tr class="bg-info">
+           <th>Ride Id</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+  	<tbody>
+    	<%locAmount.forEach(function(laob) {%>
+		<tr>
+		<td><%= laob.rideID%></td>
+		<td><%= laob.source%></td>
+		<td><%= laob.destination%></td>
+		<td><%= laob.amount%></td>
+</tr>
+		<% }); %>
+  </tbody>
+
+      </table>
+				 <p>Total Revenue($) per location</p>
+				<p><%= locRSum %></p>
+				
+			</div>
+
+		</div>
+		<script src="/angularjs/adminAngular.js"></script>
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller('adminFunctions', function($scope) {
+	
+				$scope.locRevenueFunc = function() {
+					alert($scope.locRevenue);
+					window.location = "/locRevenueFunc?locRevenue="+$scope.locRevenue;
+				}
+			});
+		</script>
+</body>
+</html>

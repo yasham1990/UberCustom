@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Sign Up to Drive With UBER</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    
+    
+    <link rel='stylesheet prefetch' href='https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc4/angular-material.css'>
+
+
+       <style>
+       
+      
+       
+       .inputdemoBasicUsage {
+    background-color: #f1f1f1;
+    box-shadow: 0 2px 5px rgba(0,0,0,.15);
+    border: 1px solid rgba(200,200,200,.4);
+    box-sizing: border-box;
+    padding: 36px;
+    width: 362px;
+}
+       
+      
+ 
+       
+       </style>
+   
+    
+    
+  </head>
+
+  <body  ng-app="MyApp"  >
+ 
+<div ng-controller="TestCtrl">
+
+
+ <nav class="navbar navbar-default" style="box-shadow: 3px 3px 5px #000000; background-color: #padding-bottom: 10px;box-shadow: 3px 3px 5px #000000; background-color: #000000;">
+
+
+
+	
+
+ <table class="headerTable" height="40">
+		<tbody><tr>
+			<td width="60%" align="right"><img src="/resources/signup/headerButton.PNG" height="55"></td>
+			
+			
+			
+			
+			
+			
+			<td width="100%" align="right"><button class="btn btn-default" style="font-size: medium;"><a href="/logout">Logout</a></button></td>
+			<td></td><td></td><td></td>
+		</tr>
+		
+		
+		
+		
+	</tbody></table>
+	
+	
+
+ </nav>	
+ 
+ 
+ <article class="col-md-8 header-text">
+ 
+            <h1 class="hero-title">Uber Needs Partners Like You.</h1>
+            <p class="hero-description ">
+              Drive with Uber and earn great money as an independent contractor. Get paid weekly just for helping our community of riders get rides around town. Be your own boss and get paid in fares for driving on your own schedule.
+            </p>
+ </article>
+ 
+ 
+ <article class="col-md-4 col-md-offset-8">
+ 
+ <div  layout="column" ng-cloak="" class="md-inline-form inputdemoBasicUsage"   class="hero-box-container" style= "margin-left: 860px; margin-right: 0px;>
+
+
+
+  <md-content layout-padding="">
+		<h1 align="center">Customer Signup</h1>
+  <form name="driverForm" ng-submit="addCustomer()">
+  
+  
+  
+  <div layout="" layout-sm="column">
+         
+        <md-input-container>
+          <input ng-model="customer.C_Firstname" placeholder="First Name" ng-required="true">
+        </md-input-container>
+        
+        <md-input-container >
+          <input ng-model="customer.C_Lastname" placeholder="Last Name" ng-required="true">
+        </md-input-container>
+        
+  </div>
+
+
+  <div layout="column" layout-lg="column">
+     <md-input-container class="md-block">
+     <input ng-model="customer.C_Email" type="email" placeholder="Email" ng-required="true">
+    </md-input-container> 
+  </div>
+     
+     <div layout="column" layout-lg="column">
+     <md-input-container class="md-block">
+     <input ng-model="customer.C_Phone" type="number" placeholder="Phone" ng-required="true">
+    </md-input-container> 
+  </div>
+     
+     
+     <div layout="column" layout-lg="column">
+      <md-input-container class="md-block">
+     <input ng-model="customer.C_Password" type="password" placeholder="Password (At least 5 character)" ng-required="true">
+     </md-input-container>
+	</div>
+	
+	<div layout="column" layout-lg="column">
+	      <md-input-container class="md-block">
+        <label>Address</label>
+        <input ng-model="customer.C_Address">
+      </md-input-container>
+     </div>
+      
+      
+      <div layout="column" layout-lg="column">
+        <md-input-container>
+          <label>City</label>
+          <input ng-model="customer.C_City" ng-required="true">
+        </md-input-container>
+        </div>
+        
+        <div layout="column" layout-lg="column" >
+        <md-input-container>
+          <label>State</label>
+          <md-select ng-model="customer.C_State">
+            <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+              {{state.abbrev}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        </div>
+        
+        <div layout="column" layout-lg="column">
+        <md-input-container>
+          <label>Zip Code</label>
+          <input name="Zip Code" ng-model="customer.C_ZipCode" placeholder="12345"
+                 required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+          <div ng-messages="driverForm.postalCode.$error" role="alert" multiple>
+            <div ng-message="required" class="my-message">You must supply a Zip Code.</div>
+            <div ng-message="pattern" class="my-message">That doesn't look like a valid Zip
+              Code.
+            </div>
+            <div ng-message="md-maxlength" class="my-message">
+              Don't use the long version silly...we don't need to be that specific...
+            </div>
+          </div>
+        </md-input-container>
+        </div>
+
+<div layout="column" layout-lg="column">
+    <md-button class="md-raised md-primary" ng-click="C_Signup()">Sign Up</md-button>  
+</div>
+
+
+  </form>
+  </md-content>
+
+</div>
+</article>
+
+</div>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-messages.min.js'></script>
+<script src='https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc4/angular-material.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js'></script>
+
+<script>
+   angular
+  .module('MyApp')
+  .controller('TestCtrl', function($scope, $http) {
+
+    $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+    'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+    'WY').split(' ').map(function(state) {
+        return {abbrev: state};
+      })
+  
+
+ 
+ 
+ $scope.C_Signup = function() {
+      
+      console.log("New Customer Details");
+      console.log($scope.customer.C_Firstname); 
+       
+         
+        
+        $http.post('/homepage/signup/customer/submit' ,{C_Firstname:$scope.customer.C_Firstname, C_Lastname:$scope.customer.C_Lastname, C_Address:$scope.customer.C_Address, C_City:$scope.customer.C_City, C_State:$scope.customer.C_State, C_ZipCode:$scope.customer.C_ZipCode, C_Phone:$scope.customer.C_Phone, C_Email:$scope.customer.C_Email, C_Password:$scope.customer.C_Password}).success(function(response){
+        console.log("Hi i am back in controller");
+        window.location = '/'
+		});
+    	}
+
+})
+     
+</script>
+
+    
+    
+    
+  </body>
+</html>
